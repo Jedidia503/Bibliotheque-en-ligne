@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliothèque en ligne</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="livres.html" class="lien">Livres</a></li>
+                <li><a href="details.html" class="lien">Détails</a></li>
+                <li><a href="ajout.html" class="lien">Ajouter</a></li>
+            </ul>
+        </nav>
+        <!-- <div class="conteneur-titre">
+            <h1>Bibliothèque en ligne</h1>
+        </div> -->
+    </header>
+    <h1 class="titre">Bibliothèque en ligne</h1>
+    <div id="conteneur-livres" class="conteneur-livres"></div>
+
+    <!-- <button id="ajouter-livre" onclick="ajouterLivre()">Ajouter un livre</button>
+    <button id="telecharger-csv" onclick="const csvData = genererCSV(livres);telechargerCSV(csvData, 'bibliotheque.csv');">Télécharger CSV</button> -->
+
+
+    <script>
+
+        async function lireCSV(fichier) {
+        const reponse = await fetch(fichier);
+        const data = await reponse.text();
+        const lignes = data.split('\n');
+
+        // Ignorer la première ligne (en-tête)
+        lignes.shift();
+
+        const livres = [];
+        for (const ligne of lignes) {
+            const champs = ligne.split(',');
+            const livre = {
+            titre: champs[0],
+            auteur: champs[1],
+            genre: champs[2],
+            image: champs[3]
+            };
+            livres.push(livre);
+        }
+        return livres;
+        }
+
+        async function chargerLivres() {
+            const livres = await lireCSV('bibliotheque.csv'); // Remplacer par le nom de votre fichier
+            console.log(livres);
+            afficherLivres(livres); // Fonction pour afficher les livres (voir réponse précédente)
+        }
+
+        chargerLivres();
+
+
+
+        // Tableau initial de livres
+        let livres = [
+            { titre: "Titre du livre 1", auteur: "Auteur du livre 1", genre: "Genre du livre 1", image: "../img L2/bd1.jpg" },
+            { titre: "Titre du livre 2", auteur: "Auteur du livre 2", genre: "Genre du livre 2", image: "../img L2/bd2.jpg" },
+            { titre: "Titre du livre 3", auteur: "Auteur du livre 3", genre: "Genre du livre 3", image: "../img L2/bd3.jpg" },
+            { titre: "Titre du livre 4", auteur: "Auteur du livre 4", genre: "Genre du livre 4", image: "../img L2/bd4.jpg" }
+        ];
+
+        function genererCSV(livres) {
+            const data = livres.map(livre => {
+                return `${livre.titre},${livre.auteur},${livre.genre},${livre.image}`;
+            });
+
+            const header = "Titre,Auteur,Genre,Image\n"; // En-tête du fichier CSV
+
+            const csvData = header + data.join("\n"); // Contenu CSV complet
+            return csvData;
+        }
+
+        function telechargerCSV(data, filename) {
+            const blob = new Blob([data], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+
+            URL.revokeObjectURL(url); // Libérer l'URL temporaire
+        }
+
+        // const csvData = genererCSV(livres);
+        // telechargerCSV(csvData, "bibliotheque.csv");
+
+
+
+
+
+        // Fonction pour afficher les livres
+        function afficherLivres() {
+            const conteneurLivres = document.getElementById("conteneur-livres");
+            conteneurLivres.innerHTML = ""; // Vider le conteneur avant d'ajouter de nouveaux livres
+            
+
+
+
+
+            livres.forEach(livre => {
+                const divLivre = document.createElement("div");
+                divLivre.classList.add("livre");
+
+                const imgLivre = document.createElement("img");
+                imgLivre.src = livre.image;
+                imgLivre.alt = livre.image;
+                divLivre.appendChild(imgLivre);
+
+                const h3Titre = document.createElement("h3");
+                h3Titre.textContent = livre.titre;
+                divLivre.appendChild(h3Titre);
+
+                const pAuteur = document.createElement("p");
+                pAuteur.textContent = "Auteur: " + livre.auteur;
+                divLivre.appendChild(pAuteur);
+
+                const pGenre = document.createElement("p");
+                pGenre.textContent = "Genre: " + livre.genre;
+                divLivre.appendChild(pGenre);
+
+                conteneurLivres.appendChild(divLivre);
+            });
+        }
+
+
+
+
+        // Fonction pour ajouter un livre
+        function ajouterLivre() {
+            // Récupérer les informations du nouveau livre depuis un formulaire (non implémenté ici)
+            const titre = "Nouveau titre"; // Exemple de valeur
+            const auteur = "Nouvel auteur"; // Exemple de valeur
+            const genre = "Nouveau genre"; // Exemple de valeur
+            const image = "image-livre-nouveau.jpg"; // Exemple de valeur
+
+            const nouveauLivre = { titre, auteur, genre, image };
+            livres.push(nouveauLivre); // Ajouter le nouveau livre au tableau
+
+            afficherLivres(); // Mettre à jour l'affichage des livres
+        }
+
+        // Afficher les livres initialement
+        // afficherLivres();
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+    "livres": [
+        {
+            "titre": "Les profs",
+            "auteur": "",
+            "isbn": "978-2-07",
+            "image": "imgL2/bd1.jpg",
+            "editeur": "Gallimard",
+            "datePublication": "1949",
+            "genre": "BD",
+            "resume": "livre intérressant",
+            "langue": "francais",
+            "nombrePages": 368,
+            "disponibilite": false,
+            "etat": "bon",
+            "emplacement": "casier 1"
+        },
+        {
+            "titre": "Les profs",
+            "auteur": "",
+            "isbn": "978-2-07",
+            "image": "imgL2/bd2.jpg",
+            "editeur": "Gallimard",
+            "datePublication": "1949",
+            "genre": "BD",
+            "resume": "livre intérressant",
+            "langue": "francais",
+            "nombrePages": 368,
+            "disponibilite": false,
+            "etat": "bon",
+            "emplacement": "casier 1"
+        },
+        {
+            "titre": "Livingstone",
+            "auteur": "",
+            "isbn": "978-2-07",
+            "image": "imgL2/bd3.jpg",
+            "editeur": "Gallimard",
+            "datePublication": "1949",
+            "genre": "BD",
+            "resume": "livre intérressant",
+            "langue": "francais",
+            "nombrePages": 368,
+            "disponibilite": false,
+            "etat": "bon",
+            "emplacement": "casier 1"
+        },
+        {
+            "titre": "Comic Magazine",
+            "auteur": "",
+            "isbn": "978-2-07",
+            "image": "imgL2/bd4.jpg",
+            "editeur": "Gallimard",
+            "datePublication": "1949",
+            "genre": "BD",
+            "resume": "livre intérressant",
+            "langue": "francais",
+            "nombrePages": 368,
+            "disponibilite": false,
+            "etat": "bon",
+            "emplacement": "casier 1"
+        }
+    ]
+}

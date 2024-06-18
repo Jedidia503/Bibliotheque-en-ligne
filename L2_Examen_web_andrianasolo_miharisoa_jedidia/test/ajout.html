@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Ajouter à la bibliothèque</title>
+    <meta charset="UTF-8">
+    <link href="styles.css" rel="stylesheet">
+    <script src="livre.js" defer></script>
+</head>
+<body>
+    <div id="action">
+        <div id="ajouter">
+            <h2>Ajouter un nouveau livre</h2>
+            
+            <form>
+                <div class="info">
+                    <label for="titre">Titre</label>
+                    <input id="titre" placeholder="titre" required>
+                </div>
+                <div class="info">
+                    <label for="auteur">Auteur</label>
+                    <input id="auteur" placeholder="auteur" required>
+                </div>
+                <div class="info">
+                    <label for="isbn">ISBN</label>
+                    <input id="isbn" placeholder="ISBN" required>
+                </div>
+                <div class="info">
+                    <label for="image">Image</label>
+                    <input id="image" placeholder="chemin vers l'image" required>
+                </div>
+                <div class="info">
+                    <label for="editeur">Éditeur</label>
+                    <input id="editeur" placeholder="editeur" required>
+                </div>
+                <div class="info">
+                    <label for="publication">Date de Publication</label>
+                    <input id="publication" placeholder="1980" required>
+                </div>
+                <div class="info">
+                    <label for="genre">Genre</label>
+                    <input id="genre" placeholder="Genre" required>
+                </div>
+                <div class="info">
+                    <label for="resume">Résumé</label>
+                    <input id="resume" placeholder="Résumé du livre" required>
+                </div>
+                <div class="info">
+                    <label for="langue">Langue</label>
+                    <input id="langue" placeholder="Langue" required>
+                </div>
+                <div class="info">
+                    <label for="page">Nombre de pages</label>
+                    <input id="page" placeholder="321" required>
+                </div>
+                <div class="info">
+                    <label for="dispo">Disponibilité</label>
+                    <input id="dispo" placeholder="tvalide" required>
+                </div>
+                <div class="info">
+                    <label for="etat">Etat</label>
+                    <input id="etat" placeholder="Bonne" required>
+                </div>
+
+                <button id="annuler">Annuler</button>
+                <button id="enregistrer">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+    <div id="liste">
+        <!-- La liste des livres s'affichent ici-->
+    </div>
+    <div id="blur"></div>
+</body>
+</html>
